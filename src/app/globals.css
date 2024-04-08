@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes pulse-opacity {
+  0% { opacity: 10%; }
+  50% { opacity: 25%; }
+  100% { opacity: 10%; }
+}
+
+.animate-pulse-opacity {
+  animation: pulse-opacity 8s infinite;
+}
+
+/* scanlines */
+/* globals.css */
+
+.flicker {
+  pointer-events: none;
+  position: fixed;
+  width: auto;
+  min-width: 100%;
+  height: 100%;
+  z-index: 15;
+  background: rgba(9, 8, 8, 0.1);
+  animation: flicker 0.3301s infinite;
+}
+
+.scanline {
+  position: fixed;
+  pointer-events: none;
+  top: 0%;
+  width: auto;
+  min-width: 100%;
+  height: 2px;
+  z-index: 10;
+  background: rgba(0, 0, 0, .3);
+  opacity: 0.75;
+  animation: scanline 7.77s linear infinite;
+}
+
+.scanlines {
+  position: fixed;
+  pointer-events: none;
+  width: auto;
+  min-width: 100%;
+  height: 100%;
+  z-index: 5;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.119; }
+  5% { opacity: 0.02841; }
+  10% { opacity: 0.35748; }
+  15% { opacity: 0.88852; }
+  20% { opacity: 0.9408; }
+  25% { opacity: 0.35088; }
+  30% { opacity: 0.22426; }
+  35% { opacity: 0.26418; }
+  40% { opacity: 0.09249; }
+  45% { opacity: 0.35312; }
+  50% { opacity: 0.89436; }
+  55% { opacity: 0.9574; }
+  60% { opacity: 0.19754; }
+  65% { opacity: 0.05086; }
+  70% { opacity: 0.12137; }
+  75% { opacity: 0.75791; }
+  80% { opacity: 0.89617; }
+  85% { opacity: 0.90183; }
+  90% { opacity: 0.20657; }
+  95% { opacity: 0.64125; }
+  100% { opacity: 0.78042; }
+}
+
+@keyframes scanline {
+  0% { top: 99%; }
+}
+
+@keyframes scanlines {
+  0% { background-position: 0 50%; }
+}
