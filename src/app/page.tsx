@@ -47,7 +47,7 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <p className='text-green-300'>
-            Hi, I'm Max and I am a web developer, welcome to my page! Here you will find a 
+            Hi, I&apos;m Max and I am a web developer, welcome to my page! Here you will find a 
             bit of information about me and a collection of projects I have worked on.
           </p>
         </CardContent>
