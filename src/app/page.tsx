@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -9,11 +9,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { ReactTerminal } from "react-terminal";
+import Terminal from '@/components/Terminal';
 import lazer_grid from '../../public/lazer_grid.png'
 import "./globals.css";
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
+
+  const commands = {
+    whoami: "jackharper",
+    // whoam
+  };
 
   useEffect(() => {
     setLoaded(true);
@@ -36,33 +43,34 @@ export default function Home() {
         className="absolute inset-0 bg-black opacity-10 animate-pulse-opacity"
         style={{ backgroundImage: `url(${lazer_grid.src})`, backgroundSize: 'cover', zIndex: '-1' }}
       ></div>
+
       <h1 className="scroll-m-20 text-3xl font-light text-green-300 md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl">
         MAXIME LAURENDEAU
       </h1>
 
-      <Card className='sm:w-5/6 md:w-4/6 lg:w-3/6 xl:w-2/6 mt-10 opacity-85'>
-        <CardHeader>
-          <CardTitle className='text-purple-500'>About me</CardTitle>
-          {/* <CardDescription>Card Description</CardDescription> */}
-        </CardHeader>
+      <Card className='sm:w-5/6 md:w-4/6 lg:w-3/6 xl:w-2/6 opacity-85 mb-5 mt-10 pt-5'>
         <CardContent>
           <p className='text-green-300'>
             Hi, I&apos;m Max and I am a web developer, welcome to my page! Here you will find a 
-            bit of information about me and a collection of projects I have worked on.
+            bit of information about me and a collection of projects I have worked on. Use the terminal or the buttons above to navigate across my website.
           </p>
         </CardContent>
-        {/* <CardFooter>
-          <p>Card Footer</p>
-        </CardFooter> */}
       </Card>
 
-      {/* <div className="flex items-center m-0 mt-16 lg:mt-36 w-4/5">
-        <p className="text-green-300">
-          Hi! I am desperately trying to land my first job as a web developer.
-          Will you feel bad enough to give this poor junior web developer 
-          his first paying job and a chance to finally make it in the industry?
-        </p>
-      </div> */}
+      <ReactTerminal
+        commands={commands}
+        // themes={{
+        //   "my-custom-theme": {
+        //     themeBGColor: "#272B36",
+        //     themeToolbarColor: "#DBDBDB",
+        //     themeColor: "#FFFEFC",
+        //     themePromptColor: "#a917a8"
+        //   }
+        // }}
+        theme="matrix"
+      />
+
+      <Terminal />
     </main>
   );
 }
