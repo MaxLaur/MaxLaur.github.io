@@ -1,25 +1,40 @@
 "use client"
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, RefObject } from 'react';
 import { 
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogClose,
+  DialogFooter,
 } from '@/components/ui/dialog';
+import { Button } from "@/components/ui/button"
+import { Hourglass } from 'react-loader-spinner'
 
-const Terminal: React.FC = () => {
-  const [resumeDialog, setResumeDialog] = useState<boolean>(false);
+interface TerminalProps {
+  resumeDialog: boolean;
+  setResumeDialog: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
   const [inputText, setInputText] = useState<string>('C:\\MaxLaur>');
   const [terminalText, setTerminalText] = useState<string[]>(["type help for available commands", "MaxLaur [version 1.0]"]);
-  const terminalRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const inputRef: RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
+
+  const handleTerminalClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   useEffect(() => {
-    // if (terminalRef.current) {
-    //   terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-    // }
   }, [terminalText]);
+
+  const handleIframeLoad = () => {
+    setLoading(false);
+  };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { selectionStart } = event.target;
@@ -59,22 +74,48 @@ const Terminal: React.FC = () => {
 
   return (
     <>
-      {
-        resumeDialog &&
-        <Dialog>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Are you absolutely sure?</DialogTitle>
-              <DialogDescription>
-                This action cannot be undone. This will permanently delete your account
-                and remove your data from our servers.
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
-      }
+      <Dialog open={resumeDialog} >
+        <DialogContent className="h-full">
+          <DialogHeader className="h-12">
+            <DialogTitle className='text-purple-300'>Maxime Laurendeau</DialogTitle>
+            <DialogDescription className='text-purple-300'>My resume</DialogDescription>
+            <DialogClose onClick={() => setResumeDialog(false)}>
+              <Button className='bg-purple-500' type="button" variant="secondary" onClick={() => setResumeDialog(false)}>
+                Close
+              </Button>
+            </DialogClose>
+          </DialogHeader>
+          <div className="flex justify-center">
+            {loading && (
+              <div className="spinner-border text-primary" role="status">
+                <Hourglass
+                  visible={true}
+                  height="80"
+                  width="80"
+                  ariaLabel="hourglass-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  colors={['#d8b4fe', '#d8b4fe']}
+                />
+              </div>
+            )}
+            <iframe
+              className="absolute inset-0 w-full h-5/6 border-none mt-36 mb-12"
+              src="https://drive.google.com/file/d/10d4LYYEVk8XHkX3nwke7BSGxPud2VP60/preview"
+              title="Resume"
+              onLoad={handleIframeLoad}
+            />
+          </div>
+          <DialogFooter className="sm:justify-start h-12">
+            
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
-      <div className="p-1 sm:w-full md:w-4/6 lg:w-4/6 xl:w-4/6 mx-auto h-124 flex flex-col bg-black text-green-300 overflow-y-auto border border-green-300 font-vt323">
+      <section
+        style={{ height: '50vh' }}
+        onClick={handleTerminalClick}
+        className="p-1 sm:w-5/6 sm:w-5/6 md:w-5/6 lg:w-4/6 xl:w-4/6 mx-auto  flex flex-col bg-black text-green-300 overflow-y-auto border border-green-300 font-vt323 text-2xl">
         <div className="flex-grow flex flex-col-reverse">
           {terminalText.map((text, index) => (
             <p key={text + index} >{text}</p>
@@ -83,12 +124,13 @@ const Terminal: React.FC = () => {
         <input
           type="text"
           value={inputText}
+          ref={inputRef}
           onChange={handleInputChange}
           onKeyPress={handleEnterPress}
           className="w-full bg-black text-green-300 border-none outline-none "
           autoFocus
         />
-      </div>
+      </section>
     </>
   );
 };
