@@ -20,6 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         vt323: ["VT323", "sans-serif"],
+        universalJack: ["universalJackFont", "sans-serif"]
       },
       colors: {
         border: "hsl(var(--border))",
