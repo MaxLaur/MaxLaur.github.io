@@ -43,7 +43,7 @@ export default function Home() {
         <div className='flicker'></div>
       }
       <nav className='flex justify-end w-full'>
-        <a href="https://drive.google.com/file/d/10d4LYYEVk8XHkX3nwke7BSGxPud2VP60/view?usp=drive_link" target="blank">
+        <a href="https://drive.google.com/file/d/1lc-Lc300vg4dhbu7hITuV4P9kufxWEP9/view?usp=drive_link" target="blank">
           <Button variant="ghost" className='m-2 hover:bg-purple-400 hover:text-green-300'>Resume</Button>
         </a>
         <a href="mailto:maxlaurend85@gmail.com">
