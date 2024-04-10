@@ -21,6 +21,8 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
   const [inputText, setInputText] = useState<string>('C:\\MaxLaur>');
   const [terminalText, setTerminalText] = useState<string[]>(["type help for available commands", "MaxLaur [version 1.0]"]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [commandHistory, setCommandHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const inputRef: RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
 
   const handleTerminalClick = () => {
@@ -30,6 +32,10 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
   };
 
   useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+      inputRef.current.setSelectionRange(inputText.length, inputText.length);
+    }
   }, [terminalText]);
 
   const handleIframeLoad = () => {
@@ -68,6 +74,20 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
       else{
         setTerminalText(prevText => [inputText, ...prevText]);
         setInputText('C:\\MaxLaur>');
+      }
+      setCommandHistory(prevHistory => [inputText, ...prevHistory]);
+      setHistoryIndex(-1);
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      event.preventDefault();
+      const newHistoryIndex = event.key === 'ArrowUp' ? historyIndex + 1 : historyIndex - 1;
+      const newInputText = commandHistory[newHistoryIndex];
+      if (newInputText !== undefined) {
+        setHistoryIndex(newHistoryIndex);
+        setInputText(newInputText);
       }
     }
   };
@@ -129,6 +149,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
           ref={inputRef}
           onChange={handleInputChange}
           onKeyPress={handleEnterPress}
+          onKeyDown={handleKeyDown}
           className="w-full bg-black text-green-300 border-none outline-none "
           autoFocus
         />
