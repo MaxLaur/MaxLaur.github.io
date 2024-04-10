@@ -24,6 +24,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const inputRef: RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
+  const terminalContainerRef = useRef<HTMLDivElement>(null);
 
   const handleTerminalClick = () => {
     if (inputRef.current) {
@@ -35,6 +36,9 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
     if (inputRef.current) {
       inputRef.current.focus();
       inputRef.current.setSelectionRange(inputText.length, inputText.length);
+    }
+    if (terminalContainerRef.current) {
+      terminalContainerRef.current.scrollTop = terminalContainerRef.current.scrollHeight;
     }
   }, [terminalText]);
 
@@ -57,29 +61,33 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
     if (event.key === 'Enter') {
       if (inputText === 'C:\\MaxLaur>help') {
         const clear = "clear/cls --- clear the terminal"
-        const ls = "ls ---------- list directory content"
-        const resume = "resume ---- view my CV"
-        setTerminalText(prevText => [resume, ls, clear, "*", inputText, ...prevText]);
-        setInputText('C:\\MaxLaur>');
+        const ls = "ls ---------- list viewable files"
+        const resume = "resume ------ view my CV"
+        const about = "about ------- about me :))"
+        const run = "run --------- `run [filename]` to view file"
+        setTerminalText(prevText => [run, resume, ls, clear, about, "*", inputText, ...prevText]);
       }
       else if (inputText === 'C:\\MaxLaur>clear' || inputText === 'C:\\MaxLaur>cls') {
         setTerminalText(["type help for available commands", "MaxLaur [version 1.0]"]);
-        setInputText('C:\\MaxLaur>');
+      }
+      else if (inputText === 'C:\\MaxLaur>ls') {
+        setTerminalText(prevText => ["docere_health_demo, srp_website", inputText, ...prevText]);
       }
       else if (inputText === 'C:\\MaxLaur>resume') {
         setTerminalText(prevText => [inputText, ...prevText]);
         setResumeDialog(true)
-        setInputText('C:\\MaxLaur>');
       }
       else{
-        setTerminalText(prevText => [inputText, ...prevText]);
-        setInputText('C:\\MaxLaur>');
+        const entry = inputText.substring('C:\\MaxLaur>'.length)
+        setTerminalText(prevText => [`'${entry}' is not recognized as an internal or external command. Type help for available commands`, inputText, ...prevText]);
       }
+      setInputText('C:\\MaxLaur>');
       setCommandHistory(prevHistory => [inputText, ...prevHistory]);
       setHistoryIndex(-1);
     }
   };
 
+  // function to access command entries history when clicking up or down.
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       event.preventDefault();
@@ -89,6 +97,48 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
         setHistoryIndex(newHistoryIndex);
         setInputText(newInputText);
       }
+    }
+    // autocomplete todo: show suggested command in input field.
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      const currentInput = inputText.substring('C:\\MaxLaur>'.length);
+      const closestMatch = findClosestMatch(currentInput, availableCommands);
+      if (closestMatch) {
+        setInputText(`C:\\MaxLaur>${closestMatch}`);
+        inputRef.current?.setSelectionRange(inputText.length, inputText.length);
+      }
+    }
+  };
+
+  //auto complete
+  const availableCommands = [
+    "help",
+    "clear",
+    "cls",
+    "resume",
+    "about"
+  ];
+  
+  const handleTabPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      const currentInput = inputText.substring('C:\\MaxLaur>'.length);
+      const closestMatch = findClosestMatch(currentInput, availableCommands);
+      if (closestMatch) {
+        setInputText(`C:\\MaxLaur>${closestMatch}`);
+        inputRef.current?.setSelectionRange(inputText.length, inputText.length);
+      }
+    }
+  };
+  
+  const findClosestMatch = (input: string, commands: string[]): string | undefined => {
+    const matches = commands.filter(command => command.startsWith(input));
+    if (matches.length === 1) {
+      return matches[0]; // Only one match found
+    } else if (matches.length > 1) {
+      return matches.reduce((a, b) => (a.length < b.length ? a : b)); // Return the shortest match
+    } else {
+      return undefined; // No match found
     }
   };
 
@@ -122,19 +172,16 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
             <iframe
               className="absolute inset-0 w-full h-5/6 border-none mt-36 mb-12"
               src="https://web2pdf.org/temp/2024-04-10/20240410210243.pdf"
-              // src="https://drive.google.com/file/d/10d4LYYEVk8XHkX3nwke7BSGxPud2VP60/preview"
               title="Resume"
               onLoad={handleIframeLoad}
             />
           </div>
-          <DialogFooter className="sm:justify-start h-12">
-            
-          </DialogFooter>
         </DialogContent>
       </Dialog>
 
       <section
-        style={{ height: '50vh' }}
+        ref={terminalContainerRef}
+        style={{ height: '50vh', overflowY: 'auto'  }}
         onClick={handleTerminalClick}
         className="p-1 sm:w-5/6 sm:w-5/6 md:w-5/6 lg:w-4/6 xl:w-4/6 mx-auto  flex flex-col bg-black text-green-300 overflow-y-auto border border-green-300 font-vt323 text-2xl"
       >
