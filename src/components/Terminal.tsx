@@ -101,7 +101,8 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
             )}
             <iframe
               className="absolute inset-0 w-full h-5/6 border-none mt-36 mb-12"
-              src="https://drive.google.com/file/d/10d4LYYEVk8XHkX3nwke7BSGxPud2VP60/preview"
+              src="https://web2pdf.org/temp/2024-04-10/20240410210243.pdf"
+              // src="https://drive.google.com/file/d/10d4LYYEVk8XHkX3nwke7BSGxPud2VP60/preview"
               title="Resume"
               onLoad={handleIframeLoad}
             />
@@ -115,7 +116,8 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
       <section
         style={{ height: '50vh' }}
         onClick={handleTerminalClick}
-        className="p-1 sm:w-5/6 sm:w-5/6 md:w-5/6 lg:w-4/6 xl:w-4/6 mx-auto  flex flex-col bg-black text-green-300 overflow-y-auto border border-green-300 font-vt323 text-2xl">
+        className="p-1 sm:w-5/6 sm:w-5/6 md:w-5/6 lg:w-4/6 xl:w-4/6 mx-auto  flex flex-col bg-black text-green-300 overflow-y-auto border border-green-300 font-vt323 text-2xl"
+      >
         <div className="flex-grow flex flex-col-reverse">
           {terminalText.map((text, index) => (
             <p key={text + index} >{text}</p>
