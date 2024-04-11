@@ -38,12 +38,12 @@ export default function Home() {
       }
       <nav className='flex justify-end w-full'>
         <a href="https://drive.google.com/file/d/1lc-Lc300vg4dhbu7hITuV4P9kufxWEP9/view?usp=drive_link" target="blank">
-          <Button variant="ghost" className='m-2 hover:bg-purple-400 hover:text-green-300'>Resume</Button>
+          <Button variant="ghost" className='m-2 hover:bg-purple-400 hover:text-green-300 text-xl'>Resume</Button>
         </a>
         <a href="mailto:maxlaurend85@gmail.com">
-          <Button variant="ghost" className='m-2 mr-10 hover:bg-purple-400 hover:text-green-300' >contact</Button>
+          <Button variant="ghost" className='m-2 mr-10 hover:bg-purple-400 hover:text-green-300 text-xl' >contact</Button>
         </a>
-        <div className='flex'>
+        <div className='flex border border-double border-green-300 border-4 pl-2 pr-2'>
           <div className='flex flex-col mr-2 mt-2'>
             <p>visual</p>
             <p>effects</p>
@@ -52,13 +52,13 @@ export default function Home() {
           <div className='flex flex-col'>
             <Toggle
               defaultPressed
-              className='m-1 p-1 text-purple-400'
+              className='m-1 p-1 text-purple-400 text-xl'
               onClick={()=>{setFlickerToggle(!flickerToggle)}}>
                 Flicker
             </Toggle>
             <Toggle
               defaultPressed
-              className='m-1 p-1 text-purple-400'
+              className='m-1 p-1 text-purple-400 text-xl'
               onClick={()=>{
                 setScanLinesToggle(!scanLinesToggle)
                 setScanLineToggle(!scanLineToggle)
@@ -80,7 +80,7 @@ export default function Home() {
 
       <Card className='sm:w-5/6 md:w-5/6 lg:w-4/6 xl:w-3/6 opacity-85 mb-5 mt-5 pt-5'>
         <CardContent>
-          <p className='text-green-300'>
+          <p className='text-green-300 text-3xl font-teko'>
             Hi, my name is Max and I am a web developer, welcome to my page! Here you will find a 
             bit of information about me and a collection of projects I have worked on. Use the terminal or the buttons above to navigate across my website.
           </p>
