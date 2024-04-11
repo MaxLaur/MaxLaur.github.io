@@ -15,9 +15,11 @@ import { Hourglass } from 'react-loader-spinner'
 interface TerminalProps {
   resumeDialog: boolean;
   setResumeDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  srpDialog: boolean;
+  setSrpDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
+const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDialog, setSrpDialog}) => {
   const [inputText, setInputText] = useState<string>('C:\\MaxLaur>');
   const [terminalText, setTerminalText] = useState<string[]>(["type help for available commands", "MaxLaur [version 1.0]"]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -153,6 +155,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
 
   return (
     <>
+      {/* RESUME DIALOG */}
       <Dialog open={resumeDialog} >
         <DialogContent className="h-full">
           <DialogHeader className="h-12">
@@ -160,6 +163,42 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
             <DialogDescription className='text-purple-300'>My resume</DialogDescription>
             <DialogClose onClick={() => setResumeDialog(false)}>
               <Button className='bg-purple-500' type="button" variant="secondary" onClick={() => setResumeDialog(false)}>
+                Close
+              </Button>
+            </DialogClose>
+          </DialogHeader>
+          <div className="flex justify-center">
+            {loading && (
+              <div className="spinner-border text-primary" role="status">
+                <Hourglass
+                  visible={true}
+                  height="80"
+                  width="80"
+                  ariaLabel="hourglass-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  colors={['#d8b4fe', '#d8b4fe']}
+                />
+              </div>
+            )}
+            <iframe
+              className="absolute inset-0 w-full h-5/6 border-none mt-36 mb-12"
+              src="https://web2pdf.org/temp/2024-04-10/20240410210243.pdf"
+              title="Resume"
+              onLoad={handleIframeLoad}
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* SRP DIALOG */}
+      <Dialog open={resumeDialog} >
+        <DialogContent className="h-full">
+          <DialogHeader className="h-12">
+            <DialogTitle className='text-purple-300'>SRP</DialogTitle>
+            <DialogDescription className='text-purple-300'>Full-stack webpage made for the Shutoko Revival Project</DialogDescription>
+            <DialogClose onClick={() => setSrpDialog(false)}>
+              <Button className='bg-purple-500' type="button" variant="secondary" onClick={() => setSrpDialog(false)}>
                 Close
               </Button>
             </DialogClose>
