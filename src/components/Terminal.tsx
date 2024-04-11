@@ -59,27 +59,35 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
 
   const handleEnterPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      if (inputText === 'C:\\MaxLaur>help') {
-        const clear = "clear/cls --- clear the terminal"
-        const ls = "ls ---------- list viewable files"
-        const resume = "resume ------ view my CV"
-        const about = "about ------- about me :))"
-        const run = "run --------- `run [filename]` to view file"
-        setTerminalText(prevText => [run, resume, ls, clear, about, "*", inputText, ...prevText]);
-      }
-      else if (inputText === 'C:\\MaxLaur>clear' || inputText === 'C:\\MaxLaur>cls') {
-        setTerminalText(["type help for available commands", "MaxLaur [version 1.0]"]);
-      }
-      else if (inputText === 'C:\\MaxLaur>ls') {
-        setTerminalText(prevText => ["docere_health_demo, srp_website", inputText, ...prevText]);
-      }
-      else if (inputText === 'C:\\MaxLaur>resume') {
-        setTerminalText(prevText => [inputText, ...prevText]);
-        setResumeDialog(true)
-      }
-      else{
-        const entry = inputText.substring('C:\\MaxLaur>'.length)
-        setTerminalText(prevText => [`'${entry}' is not recognized as an internal or external command. Type help for available commands`, inputText, ...prevText]);
+      switch (inputText) {
+        case 'C:\\MaxLaur>help': {
+          const clear = "clear/cls --- clear the terminal";
+          const ls = "ls ---------- list viewable files";
+          const resume = "resume ------ view my CV";
+          const about = "about ------- about me :))";
+          const run = "run --------- `run [filename]` to view file";
+          setTerminalText(prevText => [run, resume, ls, clear, about, "*", inputText, ...prevText]);
+          break;
+        }
+        case 'C:\\MaxLaur>clear':
+        case 'C:\\MaxLaur>cls': {
+          setTerminalText(["type help for available commands", "MaxLaur [version 1.0]"]);
+          break;
+        }
+        case 'C:\\MaxLaur>ls': {
+          setTerminalText(prevText => ["docere_health_demo, srp_website", inputText, ...prevText]);
+          break;
+        }
+        case 'C:\\MaxLaur>resume': {
+          setTerminalText(prevText => [inputText, ...prevText]);
+          setResumeDialog(true);
+          break;
+        }
+        default: {
+          const entry = inputText.substring('C:\\MaxLaur>'.length);
+          setTerminalText(prevText => [`'${entry}' is not recognized as an internal or external command. Type help for available commands`, inputText, ...prevText]);
+          break;
+        }
       }
       setInputText('C:\\MaxLaur>');
       setCommandHistory(prevHistory => [inputText, ...prevHistory]);
@@ -116,29 +124,30 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
     "clear",
     "cls",
     "resume",
-    "about"
+    "about",
+    "run"
   ];
   
-  const handleTabPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Tab') {
-      event.preventDefault();
-      const currentInput = inputText.substring('C:\\MaxLaur>'.length);
-      const closestMatch = findClosestMatch(currentInput, availableCommands);
-      if (closestMatch) {
-        setInputText(`C:\\MaxLaur>${closestMatch}`);
-        inputRef.current?.setSelectionRange(inputText.length, inputText.length);
-      }
-    }
-  };
+  // const handleTabPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (event.key === 'Tab') {
+  //     event.preventDefault();
+  //     const currentInput = inputText.substring('C:\\MaxLaur>'.length);
+  //     const closestMatch = findClosestMatch(currentInput, availableCommands);
+  //     if (closestMatch) {
+  //       setInputText(`C:\\MaxLaur>${closestMatch}`);
+  //       inputRef.current?.setSelectionRange(inputText.length, inputText.length);
+  //     }
+  //   }
+  // };
   
   const findClosestMatch = (input: string, commands: string[]): string | undefined => {
     const matches = commands.filter(command => command.startsWith(input));
     if (matches.length === 1) {
-      return matches[0]; // Only one match found
+      return matches[0];
     } else if (matches.length > 1) {
-      return matches.reduce((a, b) => (a.length < b.length ? a : b)); // Return the shortest match
+      return matches.reduce((a, b) => (a.length < b.length ? a : b));
     } else {
-      return undefined; // No match found
+      return undefined;
     }
   };
 
@@ -183,7 +192,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog}) => {
         ref={terminalContainerRef}
         style={{ height: '50vh', overflowY: 'auto'  }}
         onClick={handleTerminalClick}
-        className="p-1 sm:w-5/6 sm:w-5/6 md:w-5/6 lg:w-4/6 xl:w-4/6 mx-auto  flex flex-col bg-black text-green-300 overflow-y-auto border border-green-300 font-vt323 text-2xl"
+        className="p-1 sm:w-5/6 sm:w-5/6 md:w-5/6 lg:w-4/6 xl:w-4/6 mx-auto flex flex-col bg-black text-green-300 overflow-y-auto border border-4 border-double border-green-300 font-vt323 text-2xl"
       >
         <div className="flex-grow flex flex-col-reverse">
           {terminalText.map((text, index) => (
