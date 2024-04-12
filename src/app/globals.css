@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323:wght@400&display=swap');
 @tailwind base;
 @tailwind components;
@@ -156,7 +157,7 @@
 /* end of scanlines */
 
 /* terminal */
-.terminal {
+/* .terminal {
   background-color: #000;
   color: #0f0;
   padding: 10px;
@@ -179,19 +180,18 @@
   border-right: .15em solid #0f0;
   width: 0;
   animation: typing 4s steps(80, end), blink-caret .75s step-end infinite, stay-visible infinite;
-}
+} */
 
-@keyframes typing {
-  /* 0% { width: 0; } */
+/* @keyframes typing {
   100% { width: 100%; }
-}
+} */
 
-@keyframes blink-caret {
+/* @keyframes blink-caret {
   from, to { border-color: transparent; }
   50% { border-color: #0f0; }
-}
+} */
 
-@keyframes stay-visible {
+/* @keyframes stay-visible {
   0%, 100% { width: 100%; }
-}
+} */
 /* terminal */
