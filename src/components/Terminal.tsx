@@ -17,9 +17,11 @@ interface TerminalProps {
   setResumeDialog: React.Dispatch<React.SetStateAction<boolean>>;
   srpDialog: boolean;
   setSrpDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  aboutDialog: boolean;
+  setAboutDialog: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDialog, setSrpDialog}) => {
+const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDialog, setSrpDialog, aboutDialog, setAboutDialog}) => {
   const [inputText, setInputText] = useState<string>('C:\\MaxLaur>');
   const [terminalText, setTerminalText] = useState<string[]>(["type help for available commands", "MaxLaur [version 1.0]"]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -83,6 +85,11 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
         case 'C:\\MaxLaur>resume': {
           setTerminalText(prevText => [inputText, ...prevText]);
           setResumeDialog(true);
+          break;
+        }
+        case 'C:\\MaxLaur>about': {
+          setTerminalText(prevText => [inputText, ...prevText]);
+          setAboutDialog(true)
           break;
         }
         default: {
@@ -223,6 +230,57 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
               title="Resume"
               onLoad={handleIframeLoad}
             />
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* about me dialog */}
+      <Dialog open={aboutDialog} >
+        <DialogContent className="h-4/6">
+          <DialogHeader className="h-12">
+            <DialogTitle className='text-purple-300'>About me</DialogTitle>
+            <DialogClose onClick={() => setAboutDialog(false)}>
+              <Button className='bg-purple-500' type="button" variant="secondary" onClick={() => setAboutDialog(false)}>
+                Close
+              </Button>
+            </DialogClose>
+          </DialogHeader>
+          <div className="flex flex-col justify-center">
+            {/* {loading && (
+              <div className="spinner-border text-primary" role="status">
+                <Hourglass
+                  visible={true}
+                  height="80"
+                  width="80"
+                  ariaLabel="hourglass-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  colors={['#d8b4fe', '#d8b4fe']}
+                />
+              </div>
+            )} */}
+            <p className='text-green-300 font-teko text-3xl mb-3'>
+              Hey there, I&apos;m Max, a dedicated web developer passionate about crafting digital experiences. 
+              My journey began in 2022, and since then, I&apos;ve immersed myself in the world of web development.
+            </p>
+            <p className='text-green-300 font-teko text-3xl mb-3'>
+              After completing a full-stack web development bootcamp in January 2023, I joined a startup as an 
+              intern and quickly became an essential part of the team. My hard work paid off, and I&apos;m now a valued 
+              member of the company. Notably, out of a dozen interns, I was the only one offered 
+              a full-time position, a testament to my dedication and contribution.
+              </p>
+              <p className='text-green-300 font-teko text-3xl'>
+
+              I&apos;m proficient in a variety of technologies, including HTML, CSS, JavaScript, 
+              React, Node.js, MongoDB, Supabase, MobX, MUI, Soft UI, TypeScript, Next.js, Tailwind CSS, ShadcnUI, 
+              and I&apos;ve also worked with Spring Boot and Kotlin. I utilize tools like Visual Studio Code, 
+              IntelliJ IDEA, Git Fork, and Figma to streamline my workflow and enhance productivity.
+              </p>
+              <p className='text-green-300 font-teko text-3xl'>
+              My background as a tree planter has instilled in me a strong work ethic and a commitment 
+              to excellence. I excelled in the industry, setting important production records, fueled by my 
+              desire to become the best. I thrive in challenging environments and am always eager to expand my skills.
+            </p>
           </div>
         </DialogContent>
       </Dialog>

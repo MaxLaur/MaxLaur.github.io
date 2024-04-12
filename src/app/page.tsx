@@ -14,6 +14,7 @@ export default function Home() {
   const [resumeDialog, setResumeDialog] = useState<boolean>(false);
   const [srpDialog, setSrpDialog] = useState<boolean>(false);
   const [docereDialog, setDocereDialog] = useState<boolean>(false);
+  const [aboutDialog, setAboutDialog] = useState<boolean>(false);
   const [scanLinesToggle, setScanLinesToggle] = useState<boolean>(true);
   const [scanLineToggle, setScanLineToggle] = useState<boolean>(true);
   const [flickerToggle, setFlickerToggle] = useState<boolean>(true);
@@ -26,6 +27,8 @@ export default function Home() {
     if (resumeDialog) setResumeDialog(false)
     if (srpDialog) setSrpDialog(false)
     if (docereDialog) setDocereDialog(false)
+    if (aboutDialog) setAboutDialog(false)
+
   }
 
   return (
@@ -52,6 +55,8 @@ export default function Home() {
         setResumeDialog={setResumeDialog}
         srpDialog={srpDialog}
         setSrpDialog={setSrpDialog}
+        aboutDialog={aboutDialog}
+        setAboutDialog={setAboutDialog}
       />
     </main>
     </>
