@@ -269,8 +269,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
               member of the company. Notably, out of a dozen interns, I was the only one offered 
               a full-time position, a testament to my dedication and contribution.
               </p>
-              <p className='text-green-300 font-teko text-3xl'>
-
+              <p className='text-green-300 font-teko text-3xl mb-3'>
               I&apos;m proficient in a variety of technologies, including HTML, CSS, JavaScript, 
               React, Node.js, MongoDB, Supabase, MobX, MUI, Soft UI, TypeScript, Next.js, Tailwind CSS, ShadcnUI, 
               and I&apos;ve also worked with Spring Boot and Kotlin. I utilize tools like Visual Studio Code, 
