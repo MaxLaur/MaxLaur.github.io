@@ -21,8 +21,8 @@ const Projects = () => {
             Have a look at some of the projects I have worked on.
           </p>
         </div>
-        <div className="flex flex-row justify-evenly mt-16">
-          <Card className="flex flex-col items-center text-green-300 opacity-95 w-2/6 hover:scale-105">
+        <div className="flex lg:flex-row flex-col justify-evenly mt-16 mb-5">
+          <Card className="flex flex-col items-center text-green-300 opacity-95 w-5/6 lg:w-2/6 md:w-5/6 m-auto lg:-m-0 hover:scale-105">
             <Link href='/docere-health'>
               <p className="text-green-300 text-center text-3xl mt-10">Docere Health</p>
               <Image src={docereHomePage} alt="Docere Homepage" className="p-2"/>
@@ -30,7 +30,7 @@ const Projects = () => {
             </Link>
           </Card>
             
-          <Card className="flex flex-col items-center text-green-300 opacity-95 w-2/6 justify-center hover:scale-105">
+          <Card className="flex flex-col items-center text-green-300 opacity-95 lg:w-2/6 w-5/6 m-auto mt-5 lg:mt-0 lg:-m-0 justify-center hover:scale-105">
             <Link href='/srp'>
               <p className="text-3xl text-center">Shutoko Revivial Project website</p>
               <Image src={srpCoverImage} alt="SRP" className="p-2"/>
