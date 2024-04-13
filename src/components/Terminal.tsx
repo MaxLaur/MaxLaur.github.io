@@ -9,6 +9,7 @@ import {
   DialogClose,
   DialogFooter,
 } from '@/components/ui/dialog';
+import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { Hourglass } from 'react-loader-spinner'
 
@@ -72,7 +73,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
           const resume = "resume ------ view my CV";
           const about = "about ------- about me :))";
           const run = "run --------- `run [filename]` to view file. Type `ls` to view runnable files";
-          setTerminalText(prevText => [run, resume, ls, clear, about, "*", inputText, ...prevText]);
+          setTerminalText(prevText => [run, resume, ls, clear, about, "-$ press tab to auto complete commands $-", inputText, ...prevText]);
           break;
         }
         case 'C:\\MaxLaur>clear':
@@ -146,7 +147,9 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
     "cls",
     "resume",
     "about",
-    "run"
+    "run",
+    "run docere_health_demo",
+    "run srp_website"
   ];
   
   const findClosestMatch = (input: string, commands: string[]): string | undefined => {
@@ -168,11 +171,9 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
           <DialogHeader className="h-12">
             <DialogTitle className='text-purple-300'>Maxime Laurendeau</DialogTitle>
             <DialogDescription className='text-purple-300'>My resume</DialogDescription>
-            <DialogClose onClick={() => setResumeDialog(false)}>
-              <Button className='bg-purple-500' type="button" variant="secondary" onClick={() => setResumeDialog(false)}>
+              <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setResumeDialog(false)}>
                 Close
               </Button>
-            </DialogClose>
           </DialogHeader>
           <div className="flex justify-center">
             {loading && (
@@ -202,31 +203,18 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
       <Dialog open={srpDialog} >
         <DialogContent className="h-full">
           <DialogHeader className="h-12">
-            <DialogTitle className='text-purple-300'>SRP</DialogTitle>
-            <DialogDescription className='text-purple-300'>Full-stack webpage made for the Shutoko Revival Project</DialogDescription>
-            <DialogClose onClick={() => setSrpDialog(false)}>
-              <Button className='bg-purple-500' type="button" variant="secondary" onClick={() => setSrpDialog(false)}>
-                Close
-              </Button>
-            </DialogClose>
+            <DialogTitle className='text-purple-400 text-center text-2xl'>SRP</DialogTitle>
+            <DialogDescription className='text-green-300 text-3xl font-teko text-center'>Full-stack webpage made for the Shutoko Revival Project using the MERN stack (Mongodb, Express, React, Node)</DialogDescription>
           </DialogHeader>
-          <div className="flex justify-center">
-            {loading && (
-              <div className="spinner-border text-primary" role="status">
-                <Hourglass
-                  visible={true}
-                  height="80"
-                  width="80"
-                  ariaLabel="hourglass-loading"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  colors={['#d8b4fe', '#d8b4fe']}
-                />
-              </div>
-            )}
+          <div className="flex justify-center mt-5">
             <iframe width="1020" height="630" src="https://www.youtube.com/embed/VKlrg3rCXeQ?si=_E0ErFOATKWE4qw8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-            {/* Put srp video here? */}
           </div>
+          <p className='text-green-300 text-3xl font-teko text-center'>
+            project was build under 2 weeks
+          </p>
+          <Button className='m-10 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setSrpDialog(false)}>
+            Close
+          </Button>
         </DialogContent>
       </Dialog>
 
@@ -234,17 +222,15 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
       <Dialog open={docereDialog} >
         <DialogContent className="h-full">
           <DialogHeader className="h-12">
-            <DialogTitle className='text-purple-300'>Docere Health</DialogTitle>
-            <DialogDescription className='text-purple-300'>Demo for the EHR/EMR app</DialogDescription>
-            <DialogClose onClick={() => setDocereDialog(false)}>
-              <Button className='bg-purple-500' type="button" variant="secondary" onClick={() => setDocereDialog(false)}>
-                Close
-              </Button>
-            </DialogClose>
+            <DialogTitle className='text-purple-400 text-center text-2xl '>Docere Health</DialogTitle>
+            <DialogDescription className='text-green-300 font-teko text-center text-3xl'> Docere Health is an electronic health/medical record platform</DialogDescription>
           </DialogHeader>
           <div className="flex justify-center">
-            {/* Docere Health content? */}
+            {/* Docere Health content */}
           </div>
+          <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setAboutDialog(false)}>
+            Close
+          </Button>
         </DialogContent>
       </Dialog>
 
@@ -252,36 +238,38 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
       <Dialog open={aboutDialog}>
         <DialogContent className="h-auto">
           <DialogHeader className="h-12">
-            <DialogTitle className='text-purple-300'>About me</DialogTitle>
-            <DialogClose onClick={() => setAboutDialog(false)}>
-              <Button className='bg-purple-500' type="button" variant="secondary" onClick={() => setAboutDialog(false)}>
-                Close
-              </Button>
-            </DialogClose>
+            <DialogTitle className='text-purple-400 text-center text-2xl'>About me</DialogTitle>
           </DialogHeader>
           <div className="flex flex-col justify-center">
-            <p className='text-green-300 font-teko text-3xl mt-8 mb-3'>
-              Hey there, I&apos;m Max, a dedicated web developer passionate about crafting digital experiences. 
-              My journey began in 2022, and since then, I&apos;ve immersed myself in the world of web development.
-            </p>
             <p className='text-green-300 font-teko text-3xl mb-3'>
-              After completing a full-stack web development bootcamp in January 2023, I joined a startup 
+              Hey there, I&apos;m a web developer called Max. 
+              My journey into tech began in 2022, and since then, I&apos;ve immersed myself in the world of web development.
+            </p>
+            <Separator className="my-4" />
+            <p className='text-green-300 font-teko text-3xl mb-3'>
+              After completing a full-stack web development bootcamp in April 2023, I joined a startup 
               called Docere Health as an intern and quickly became an essential part of the team. 
-              My hard work paid off, and I&apos;m now a valued member of the company. Notably, 
-              out of a dozen interns, I was the only one offered a full-time position, a testament to my dedication and contribution.
+              My hard work paid off and I&apos;m now a valued member of the company. Notably, 
+              out of a dozen interns, I was the only one to be offered a full-time 
+              position which is a testament to my dedication and contribution.
               </p>
+              <Separator className="my-4" />
               <p className='text-green-300 font-teko text-3xl mb-3'>
               I&apos;m proficient in a variety of technologies, including HTML, CSS, JavaScript, 
               React, Node.js, MongoDB, Supabase, MobX, MUI, Soft UI, TypeScript, Next.js, Tailwind CSS, ShadcnUI, 
               and I&apos;ve also worked with Spring Boot and Kotlin. I utilize tools like Visual Studio Code, 
               IntelliJ IDEA, Git Fork, and Figma.
               </p>
+              <Separator className="my-4" />
               <p className='text-green-300 font-teko text-3xl'>
               My background as a tree planter has instilled in me a strong work ethic and a commitment 
               to excellence. I excelled in the industry, setting important production records, fueled by my 
               desire to become the best. I thrive in challenging environments and am always eager to expand my skills.
             </p>
           </div>
+          <Button className='m-1 mt-10 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setAboutDialog(false)}>
+            Close
+          </Button>
         </DialogContent>
       </Dialog>
 
