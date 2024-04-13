@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card"
+import Image from 'next/image';
+import { Card } from "@/components/ui/card"
 import Navbar from "@/components/Navbar";
 import lazer_grid from"../../../public/lazer_grid.png";
 
@@ -22,8 +23,9 @@ const DocereHealth = () => {
           <h1 className="text-5xl ml-10 mr-10 hover:scale-105">
             <Link href='https://docereapp.net/' className="hover:text-purple-500" target="blank">Docere Health, a startup with a mission to revolutionize family health care</Link>
           </h1>
-          <div className="flex flex-col lg:flex-row justify-evenly mt-5 ml-5 mr-5">
-            <Card className="lg:w-2/6 md:w-5/6 sm:w-5/6 p-5 text-green-300">
+          {/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */}
+          <div className="flex flex-col lg:flex-row lg:justify-evenly md:justify-center mt-5 ml-5 mr-5">
+            <Card className="lg:w-2/6 md:w-5/6 sm:w-5/6 mb-3 p-5 text-green-300">
               <p>
               <span className='text-5xl'>I</span> have joined Docere Health in May 2023 as an intern and soon began 
                 to elevate my role by becoming the main contributor to the creation of this app
@@ -32,15 +34,16 @@ const DocereHealth = () => {
               </p>
             </Card>
 
-            <Card className="w-2/6 ml-5 mr-5 p-5 text-green-300">
+            <Card className="lg:w-2/6 md:w-5/6 sm:w-5/6 lg:ml-5 md:mr-5 mb-3 p-5 text-green-300">
               <p>
               <span className='text-5xl'>F</span>or this I was rewarded in December 2023 with a full-time 
                 position as soon as the company would close it&apos;s first ever round of financing which happened in early 2024.
               </p>
             </Card>
 
-            <Card className="w-2/6 p-3 text-green-300 text-center">
-              <span className='text-5xl'>F</span>rom implementing user registration, authentication, user role protected routes to protecting our apis and more,
+            <Card className="lg:w-2/6 md:w-5/6 sm:w-5/6 mb-3 p-3 text-green-300 lg:text-center">
+              <span className='text-5xl'>F</span>rom implementing user registration, authentication, 
+              user role protected routes to protecting our apis and more,
               I have taken multiple critical tasks normally not given to interns.
             </Card>
           </div>
