@@ -74,7 +74,7 @@ const Navbar = () => {
           <Link href="/">
             <Button variant="ghost" className='m-2 mr-4 hover:bg-purple-400 hover:text-green-300 text-xl' >Home</Button>
           </Link>
-          <Link href="https://drive.google.com/file/d/1lc-Lc300vg4dhbu7hITuV4P9kufxWEP9/view?usp=drive_link" target="_blank">
+          <Link href="https://drive.google.com/file/d/1lc-Lc300vg4dhbu7hITuV4P9kufxWEP9/view?usp=sharing" target="_blank">
             <Button variant="ghost" className='m-2 hover:bg-purple-400 hover:text-green-300 text-xl'>Resume</Button>
           </Link>
           <Link href="https://www.linkedin.com/in/maxime-laurendeau/" target="_blank">
