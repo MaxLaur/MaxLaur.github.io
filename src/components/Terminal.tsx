@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState, useRef, RefObject } from 'react';
+import Link from 'next/link';
 import { 
   Dialog,
   DialogContent,
@@ -169,8 +170,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
       <Dialog open={resumeDialog} >
         <DialogContent className="h-full">
           <DialogHeader className="h-12">
-            <DialogTitle className='text-purple-300'>Maxime Laurendeau</DialogTitle>
-            <DialogDescription className='text-purple-300'>My resume</DialogDescription>
+            <DialogTitle className='text-purple-300 text-center text-3xl'>My Resume</DialogTitle>
               <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setResumeDialog(false)}>
                 Close
               </Button>
@@ -191,7 +191,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
             )}
             <iframe
               className="absolute inset-0 w-full h-5/6 border-none mt-36 mb-12"
-              src="https://web2pdf.org/temp/2024-04-10/20240410210243.pdf"
+              src="https://web2pdf.org/temp/2024-04-29/20240429235444.pdf"
               title="Resume"
               onLoad={handleIframeLoad}
             />
@@ -201,18 +201,26 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
 
       {/* SRP DIALOG */}
       <Dialog open={srpDialog} >
-        <DialogContent className="h-full">
+        <DialogContent>
           <DialogHeader className="h-12">
             <DialogTitle className='text-purple-400 text-center text-2xl'>SRP</DialogTitle>
-            <DialogDescription className='text-green-300 text-3xl font-teko text-center'>Full-stack webpage made for the Shutoko Revival Project using the MERN stack (Mongodb, Express, React, Node)</DialogDescription>
+            <DialogDescription className='text-green-300 text-3xl font-teko text-center'>Full-stack webpage made for the Shutoko Revival Project using the MERN stack (Mongodb, Express, React, Node) and Auth0</DialogDescription>
           </DialogHeader>
-          <div className="flex justify-center mt-5">
+          {/* <div className="flex justify-center mt-5">
             <iframe width="1020" height="630" src="https://www.youtube.com/embed/VKlrg3rCXeQ?si=_E0ErFOATKWE4qw8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          </div> */}
+          <div className="relative mt-32 sm:mt-14" style={{ paddingTop: '56.25%' }}>
+            <iframe 
+              className="absolute top-0 left-0 w-full h-full" 
+              src="https://www.youtube.com/embed/VKlrg3rCXeQ?si=_E0ErFOATKWE4qw8" 
+              title="YouTube video player" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerPolicy="strict-origin-when-cross-origin" 
+              allowFullScreen
+            ></iframe>
           </div>
-          <p className='text-green-300 text-3xl font-teko text-center'>
-            project was build under 2 weeks
-          </p>
-          <Button className='m-10 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setSrpDialog(false)}>
+
+          <Button className='m-10 p-3 text-purple-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setSrpDialog(false)}>
             Close
           </Button>
         </DialogContent>
@@ -220,7 +228,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
 
       {/* DOCERE DIALOG */}
       <Dialog open={docereDialog} >
-        <DialogContent className="h-full">
+        <DialogContent>
           <DialogHeader className="h-12">
             <DialogTitle className='text-purple-400 text-center text-2xl '>Docere Health</DialogTitle>
             <DialogDescription className='text-green-300 font-teko text-center text-3xl'> Docere Health is an electronic health/medical record platform</DialogDescription>
@@ -275,7 +283,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
 
       <section
         ref={terminalContainerRef}
-        style={{ height: '50vh', overflowY: 'auto'  }}
+        style={{ height: '70vh', overflowY: 'auto'  }}
         onClick={handleTerminalClick}
         className="p-1 w-full md:w-5/6 lg:w-4/6 xl:w-4/6 mx-auto flex flex-col bg-black text-green-300 overflow-y-auto border border-4 border-double border-green-300 font-vt323 text-2xl"
       >

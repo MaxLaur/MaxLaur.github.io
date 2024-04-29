@@ -42,14 +42,14 @@ export default function Home() {
         <h1 className="scroll-m-20 text-3xl font-light text-green-300 md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl">
           MAX LAURENDEAU
         </h1>
-        <Card className='sm:w-5/6 md:w-5/6 lg:w-4/6 xl:w-3/6 opacity-85 mb-5 mt-5 pt-5'>
+        {/* <Card className='sm:w-5/6 md:w-5/6 lg:w-4/6 xl:w-3/6 opacity-85 mb-5 mt-5 pt-5'>
           <CardContent>
             <p className='text-green-300 text-3xl font-teko'>
               Hi, my name is Max and I am a web developer. Here you will find a 
               bit of information about me and a collection of projects I have worked on. Use the terminal or the menu above to navigate.
             </p>
           </CardContent>
-        </Card>
+        </Card> */}
         <Terminal
           resumeDialog={resumeDialog}
           setResumeDialog={setResumeDialog}
