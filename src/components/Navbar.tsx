@@ -72,34 +72,34 @@ const Navbar = () => {
 
         <div className="hidden md:flex text-purple-400">
           <Link href="/">
-            <Button variant="ghost" className='m-2 mr-4 hover:bg-purple-400 hover:text-green-300 text-xl' >Home</Button>
+            <Button variant="ghost" className='m-2 mr-4 hover:bg-purple-400 hover:text-green-300 text-xl tracking-wider'>Home</Button>
           </Link>
           <Link href="https://drive.google.com/file/d/1mJN9zEvyk1nnRz1rriFa94G6X-kecnRi/view?usp=drive_link" target="_blank">
-            <Button variant="ghost" className='m-2 hover:bg-purple-400 hover:text-green-300 text-xl'>Resume</Button>
+            <Button variant="ghost" className='m-2 hover:bg-purple-400 hover:text-green-300 text-xl tracking-wider'>Resume</Button>
           </Link>
           <Link href="https://www.linkedin.com/in/maxime-laurendeau/" target="_blank">
-            <Button variant="ghost" className='m-2 hover:bg-purple-400 hover:text-green-300 text-xl'>LinkedIn</Button>
+            <Button variant="ghost" className='m-2 hover:bg-purple-400 hover:text-green-300 text-xl tracking-wider'>LinkedIn</Button>
           </Link>
           <Link href="/projects">
-            <Button variant="ghost" className='m-2 mr-10 hover:bg-purple-400 hover:text-green-300 text-xl' >Projects</Button>
+            <Button variant="ghost" className='m-2 mr-10 hover:bg-purple-400 hover:text-green-300 text-xl tracking-wider' >Projects</Button>
           </Link>
         </div>
         {/* Effects toggle button section */}
         <div className='flex border border-double border-green-300 border-4 pl-2 pr-2'>
-          <div className='flex flex-col mr-2 mt-2'>
+          <div className='flex flex-col mr-2 mt-2 tracking-wider'>
             <p>visual</p>
             <p>effects</p>
           </div>
           <div className='flex flex-col'>
             <Toggle
               defaultPressed
-              className='m-1 p-1 text-purple-400 text-xl'
+              className='m-1 p-1 text-purple-400 text-xl tracking-wider'
               onClick={()=>{setFlickerToggle(!flickerToggle)}}>
                 Flicker
             </Toggle>
             <Toggle
               defaultPressed
-              className='m-1 p-1 text-purple-400 text-xl'
+              className='m-1 p-1 text-purple-400 text-xl tracking-wider'
               onClick={()=>{
                 setScanLinesToggle(!scanLinesToggle)
                 setScanLineToggle(!scanLineToggle)
