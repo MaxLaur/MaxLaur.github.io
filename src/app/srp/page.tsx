@@ -34,9 +34,9 @@ const SRP = () => {
           </div>
           <div className="flex flex-col items-center justify-evenly mb-10 w-full">
             <Card className="text-green-300 w-full lg:w-4/6 p-3 my-4">This project was made in under 2 weeks using the MERN stack with Auth0. Connects to the official SRP apis for real time server information and lap time leaderboards. Logged in users have the option to favorite the servers they like best.</Card>
-            <div className=" flex justify-center">
+            <div className="flex justify-center">
               <iframe
-                className="absolute w-5/6 h-2/6 md:w-3/6 xl:h-3/6"
+                className="absolute w-full h-2/6 md:w-3/6 xl:h-3/6"
                 src="https://www.youtube.com/embed/VKlrg3rCXeQ?si=_E0ErFOATKWE4qw8"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
