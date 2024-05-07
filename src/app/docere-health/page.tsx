@@ -20,22 +20,17 @@ const DocereHealth = () => {
         }}
       />
       <section>
-        <div className="flex justify-center mt-5">
-          <Link href='https://docereapp.net/' target="blank">
-            <img src="https://docereapp.net/static/media/logo.4d302cfa78cbed6b2f37.png" className="size-16 hover:scale-150"/>
-          </Link>
-        </div>
         <article className="flex flex-col items-center font-teko text-3xl mt-4 text-green-300">
-          <h1 className="text-5xl ml-10 mr-10 hover:scale-105">
-            <Link href='https://docereapp.net/' className="hover:text-purple-500" target="blank">Docere Health, a startup with a mission to revolutionize family health care</Link>
+          <h1 className="text-5xl ml-10 mr-10">
+            <Link href='https://docereapp.net/' className="hover:text-purple-400 hover:scale-105 underline" target="blank">Docere Health</Link>, a startup with a mission to revolutionize family health care
           </h1>
           {/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */}
           <div className="flex flex-col lg:flex-row lg:justify-evenly md:justify-center mt-5 ml-5 mr-5">
             <Card className="lg:w-2/6 md:w-5/6 sm:w-5/6 mb-3 p-5 text-green-300">
               <p>
-              <span className='text-5xl'>I</span> have joined Docere Health in May 2023 as an intern and soon began 
+              <span className='text-5xl'>I</span> joined Docere Health in May 2023 as an intern and soon began 
                 to elevate my role by becoming the main contributor to the creation of this app
-                having created a large amount of features and at least touching and improving most
+                having implemented a large amount of features and at least touching and improving most
                 of the remaining ones, if not all.
               </p>
             </Card>
@@ -52,6 +47,16 @@ const DocereHealth = () => {
               user role protected routes to protecting our apis and more,
               I have taken multiple critical tasks normally not given to interns.
             </Card>
+          </div>
+          <div className="flex justify-center">
+            <iframe
+              className="absolute w-full h-2/6 md:w-3/6 xl:h-3/6"
+              src="https://www.youtube.com/embed/GeuwfXXcjZw?si=o_RXHoIROmfl20H7"
+              title="YouTube video player"
+              allow="web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen>
+            </iframe>
           </div>
         </article>
       </section>
