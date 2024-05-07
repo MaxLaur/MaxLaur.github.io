@@ -39,7 +39,7 @@ const SRP = () => {
                 className="absolute w-full h-2/6 md:w-3/6 xl:h-3/6"
                 src="https://www.youtube.com/embed/VKlrg3rCXeQ?si=_E0ErFOATKWE4qw8"
                 title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               />

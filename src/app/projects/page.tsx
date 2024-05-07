@@ -11,10 +11,6 @@ const Projects = () => {
   return (
     <main>
       <Navbar/>
-      {/* <div 
-        className="absolute inset-0 bg-black opacity-10 animate-pulse-opacity"
-        style={{ backgroundImage: `url(${lazer_grid.src})`, backgroundSize: 'cover', zIndex: '-1' }}
-      /> */}
       <div 
         className="fixed top-0 left-0 w-full h-full bg-black opacity-10 animate-pulse-opacity"
         style={{ 
@@ -26,8 +22,8 @@ const Projects = () => {
         }}
       />
       <section>
-        <div className="flex justify-center font-teko text-3xl mt-10 text-green-300">
-          <p>
+        <div className="flex justify-center mt-10">
+          <p className="font-teko text-green-300 text-3xl mx-4">
             Have a look at some of the projects I have worked on.
           </p>
         </div>
