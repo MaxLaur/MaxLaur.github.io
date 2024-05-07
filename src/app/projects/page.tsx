@@ -11,9 +11,19 @@ const Projects = () => {
   return (
     <main>
       <Navbar/>
-      <div 
+      {/* <div 
         className="absolute inset-0 bg-black opacity-10 animate-pulse-opacity"
         style={{ backgroundImage: `url(${lazer_grid.src})`, backgroundSize: 'cover', zIndex: '-1' }}
+      /> */}
+      <div 
+        className="fixed top-0 left-0 w-full h-full bg-black opacity-10 animate-pulse-opacity"
+        style={{ 
+          backgroundImage: `url(${lazer_grid.src})`, 
+          backgroundSize: 'cover',
+          backgroundRepeat: 'repeat-y',
+          zIndex: '-1',
+          transform: 'scaleY(-1)'
+        }}
       />
       <section>
         <div className="flex justify-center font-teko text-3xl mt-10 text-green-300">
