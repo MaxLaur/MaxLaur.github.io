@@ -33,7 +33,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
   const terminalPath = 'C:\\MaxLaur>'
   const terminalIntro = [
     <span key="command">Type <span className='text-purple-400'>help</span> for available commands</span>,
-    <span key="command">Hi, I&apos;m Max, a web developer focused on the frontend.<span className='text-purple-400'> Use the terminal</span> or the menu above to view my portfolio&apos;s content.</span>,
+    <span key="command">Hi, I&apos;m Max, a fullstack web developer.<span className='text-purple-400'> Use the terminal</span> or the menu above to view my portfolio&apos;s content.</span>,
     "MaxLaur [version 1.0]"
   ]
   const [inputText, setInputText] = useState<string>(terminalPath);
@@ -244,8 +244,21 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
             <DialogTitle className='text-purple-400 text-center text-2xl '>Docere Health</DialogTitle>
             <DialogDescription className='text-green-300 font-teko text-center text-3xl'> Docere Health is an electronic health/medical record platform</DialogDescription>
           </DialogHeader>
-          <div className="flex justify-center">
-            {/* Docere Health content */}
+          <div className="relative mt-14" style={{ paddingTop: '56.25%' }}>
+            <iframe
+              className="absolute top-0 left-0 w-full h-full" 
+              src="https://www.youtube.com/embed/GeuwfXXcjZw?si=o_RXHoIROmfl20H7"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen>
+            </iframe>
+          </div>
+          <div className="flex justify-center font-teko text-2xl text-green-300">
+            I have worked on this demo app from May 2023 to January 2024 with a small team of interns, overseen by the co-founders.
+            I was the main contributor and was responsible for features such as user registration, authentication, 
+            user role protected routes to protecting our apis and more.
+            I have taken multiple critical tasks normally not given to interns.
           </div>
           <div className='flex justify-center'>
             <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => {setDocereDialog(false); setSecretFour(true)}}>
@@ -267,26 +280,26 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
               My journey into tech began in 2022, and since then, I&apos;ve immersed myself in the world of web development.
             </p>
             <Separator className="my-4" />
-            <p className='text-green-300 font-teko text-3xl mb-3'>
-              After completing a full-stack web development bootcamp in April 2023, I joined a startup 
-              called Docere Health as an intern and quickly became an essential part of the team. 
-              My hard work paid off and I&apos;m now a valued member of the company. Notably, 
-              out of a dozen interns, I was the only one to be offered a full-time 
-              position which is a testament to my dedication and contribution.
-              </p>
-              <Separator className="my-4" />
               <p className='text-green-300 font-teko text-3xl mb-3'>
-              I&apos;m proficient in a variety of technologies, including HTML, CSS, JavaScript, 
-              React, Node.js, MongoDB, Supabase, MobX, MUI, Soft UI, TypeScript, Next.js, Tailwind CSS, ShadcnUI, 
-              and I&apos;ve also worked with Spring Boot and Kotlin. I utilize tools like Visual Studio Code, 
-              IntelliJ IDEA, Git Fork, and Figma.
+                After completing a full-stack web development bootcamp in April 2023, I joined a startup 
+                called Docere Health as an intern and quickly became an essential part of the team. 
+                My hard work paid off and I&apos;m now a valued member of the company. Notably, 
+                out of a dozen interns, I was the only one to be offered a full-time 
+                position which is a testament to my dedication and contribution.
               </p>
-              <Separator className="my-4" />
+              {/* <Separator className="my-4" /> */}
+              {/* <p className='text-green-300 font-teko text-3xl mb-3'>
+                I&apos;m proficient in a variety of technologies, including HTML, CSS, JavaScript, 
+                React, Node.js, MongoDB, Supabase, MobX, MUI, Soft UI, TypeScript, Next.js, Tailwind CSS, ShadcnUI, 
+                and I&apos;ve also worked with Spring Boot and Kotlin. I utilize tools like Visual Studio Code, 
+                IntelliJ IDEA, Git Fork, and Figma.
+              </p> */}
+              {/* <Separator className="my-4" />
               <p className='text-green-300 font-teko text-3xl'>
-              My background as a tree planter has instilled in me a strong work ethic and a commitment 
-              to excellence. I excelled in the industry, setting important production records, fueled by my 
-              desire to become the best. I thrive in challenging environments and am always eager to expand my skills.
-            </p>
+                My background as a tree planter has instilled in me a strong work ethic and a commitment 
+                to excellence. I excelled in the industry, setting important production records, fueled by my 
+                desire to become the best. I thrive in challenging environments and am always eager to expand my skills.
+            </p> */}
           </div>
           <div className='flex justify-center'>
             <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => {setAboutDialog(false); setSecretOne(true)}}>
