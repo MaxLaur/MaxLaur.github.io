@@ -8,13 +8,7 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
@@ -55,35 +49,47 @@ const Navbar = () => {
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-              <Link href="https://drive.google.com/file/d/1mJN9zEvyk1nnRz1rriFa94G6X-kecnRi/view?usp=drive_link" target="_blank">
-                <DropdownMenuItem className='cursor-pointer text-purple-400'>Resume</DropdownMenuItem>
-              </Link>
+                <Link href="https://drive.google.com/file/d/1mJN9zEvyk1nnRz1rriFa94G6X-kecnRi/view?usp=drive_link" target="_blank">
+                  <DropdownMenuItem className='cursor-pointer text-purple-400'>Resume</DropdownMenuItem>
+                </Link>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
-              <Link href="https://www.linkedin.com/in/maxime-laurendeau/" target="_blank">
-                <DropdownMenuItem className='cursor-pointer text-purple-400'>LinkedIn</DropdownMenuItem>
-              </Link>
-              <Link href="https://github.com/MaxLaur" target="_blank">
-                <DropdownMenuItem className='cursor-pointer text-purple-400'>GitHub</DropdownMenuItem>
-              </Link>
+                <Link href="https://www.linkedin.com/in/maxime-laurendeau/" target="_blank">
+                  <DropdownMenuItem className='cursor-pointer text-purple-400'>LinkedIn</DropdownMenuItem>
+                </Link>
+                <Link href="https://github.com/MaxLaur" target="_blank">
+                  <DropdownMenuItem className='cursor-pointer text-purple-400'>GitHub</DropdownMenuItem>
+                </Link>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
 
-        <div className="hidden md:flex text-purple-400">
+        <ul className="hidden md:flex text-purple-400">
+          <li>
           <Link href="/">
             <Button variant="ghost" className='m-2 mr-4 hover:bg-purple-400 hover:text-green-300 text-xl tracking-wider'>Home</Button>
           </Link>
+          </li>
+          
+          <li>
           <Link href="https://drive.google.com/file/d/1mJN9zEvyk1nnRz1rriFa94G6X-kecnRi/view?usp=drive_link" target="_blank">
             <Button variant="ghost" className='m-2 hover:bg-purple-400 hover:text-green-300 text-xl tracking-wider'>Resume</Button>
           </Link>
+          </li>
+          
+          <li>
           <Link href="https://www.linkedin.com/in/maxime-laurendeau/" target="_blank">
             <Button variant="ghost" className='m-2 hover:bg-purple-400 hover:text-green-300 text-xl tracking-wider'>LinkedIn</Button>
           </Link>
+          </li>
+          
+          <li>
           <Link href="/projects">
             <Button variant="ghost" className='m-2 mr-10 hover:bg-purple-400 hover:text-green-300 text-xl tracking-wider' >Projects</Button>
           </Link>
-        </div>
+          </li>
+          
+        </ul>
         {/* Effects toggle button section */}
         <div className='flex border border-double border-green-300 border-4 pl-2 pr-2'>
           <div className='flex flex-col mr-2 mt-2 tracking-wider'>
