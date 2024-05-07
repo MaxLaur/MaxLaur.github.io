@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Terminal from '@/components/Terminal';
-import lazer_grid from '../../public/lazer_grid.png'
+import lazer_grid from '../../public/lazer_grid.jpg'
 import candle from '../../public/candle.gif'
 import lights_out from '../../public/lights_out.gif'
 import "./globals.css";

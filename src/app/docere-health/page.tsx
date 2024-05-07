@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import { Card } from "@/components/ui/card"
 import Navbar from "@/components/Navbar";
-import lazer_grid from"../../../public/lazer_grid.png";
+import lazer_grid from"../../../public/lazer_grid.jpg";
 
 const DocereHealth = () => {
   return (

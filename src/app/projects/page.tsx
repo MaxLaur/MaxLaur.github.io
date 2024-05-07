@@ -1,10 +1,10 @@
 "use client"
 import Navbar from "@/components/Navbar";
-import lazer_grid from"../../../public/lazer_grid.png";
+import lazer_grid from"../../../public/lazer_grid.jpg";
 import Link from "next/link";
 import Image from 'next/image';
 import { Card } from "@/components/ui/card"
-import srpCoverImage from "../../../public/k4ntycvz.bmp"
+import srpCoverImage from "../../../public/maxresdefault.jpg"
 import docereHomePage from "../../../public/docereHomePage.png"
 
 const Projects = () => {
