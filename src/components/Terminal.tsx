@@ -224,7 +224,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
               className="absolute top-0 left-0 w-full h-full" 
               src="https://www.youtube.com/embed/VKlrg3rCXeQ?si=_E0ErFOATKWE4qw8" 
               title="YouTube video player" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allow="web-share" 
               referrerPolicy="strict-origin-when-cross-origin" 
               allowFullScreen
             ></iframe>
@@ -249,7 +249,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
               className="absolute top-0 left-0 w-full h-full" 
               src="https://www.youtube.com/embed/GeuwfXXcjZw?si=o_RXHoIROmfl20H7"
               title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allow="web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen>
             </iframe>
