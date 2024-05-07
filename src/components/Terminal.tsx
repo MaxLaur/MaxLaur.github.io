@@ -1,14 +1,11 @@
 "use client"
 import { useEffect, useState, useRef, RefObject } from 'react';
-import Link from 'next/link';
 import { 
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogClose,
-  DialogFooter,
 } from '@/components/ui/dialog';
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
@@ -23,11 +20,22 @@ interface TerminalProps {
   setDocereDialog: React.Dispatch<React.SetStateAction<boolean>>;
   aboutDialog: boolean;
   setAboutDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  setSecretOne: React.Dispatch<React.SetStateAction<boolean>>;
+  setSecretTwo: React.Dispatch<React.SetStateAction<boolean>>;
+  setSecretThree: React.Dispatch<React.SetStateAction<boolean>>;
+  setSecretFour: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDialog, setSrpDialog, aboutDialog, setAboutDialog, docereDialog, setDocereDialog}) => {
-  const [inputText, setInputText] = useState<string>('C:\\MaxLaur>');
-  const [terminalText, setTerminalText] = useState<string[]>(["type help for available commands", "MaxLaur [version 1.0]"]);
+const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDialog, setSrpDialog, aboutDialog, setAboutDialog, docereDialog, setDocereDialog, setSecretOne, setSecretTwo, setSecretThree, setSecretFour}) => {
+  //prefix for command line. dont forget to change!
+  const terminalPath = 'C:\\MaxLaur>'
+  const terminalIntro = [
+    "type help for available commands",
+    "Hi, I'm Max, a web developer focused on the frontend. Use the terminal or the menu above to view my portfolio's content.",
+    "MaxLaur [version 1.0]"
+  ]
+  const [inputText, setInputText] = useState<string>(terminalPath);
+  const [terminalText, setTerminalText] = useState<string[]>(terminalIntro);
   const [loading, setLoading] = useState<boolean>(true);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
@@ -73,7 +81,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
           const ls = "ls ---------- list viewable files";
           const resume = "resume ------ view my CV";
           const about = "about ------- about me :))";
-          const run = "run --------- `run [filename]` to view file. Type `ls` to view runnable files";
+          const run = "run --------- `run [filename]` to view a file. Type `ls` to view runnable files";
           setTerminalText(prevText => [run, resume, ls, clear, about, "-$ press tab to auto complete commands $-", inputText, ...prevText]);
           break;
         }
@@ -141,7 +149,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
     }
   };
 
-  //auto complete
+  //auto complete choices
   const availableCommands = [
     "help",
     "clear",
@@ -171,9 +179,11 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
         <DialogContent className="h-full">
           <DialogHeader className="h-12">
             <DialogTitle className='text-purple-300 text-center text-3xl'>My Resume</DialogTitle>
-              <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setResumeDialog(false)}>
+            <div className='flex justify-center'>
+              <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => {setResumeDialog(false); setSecretTwo(true)}}>
                 Close
               </Button>
+            </div>
           </DialogHeader>
           <div className="flex justify-center">
             {loading && (
@@ -193,6 +203,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
               className="absolute inset-0 w-full h-5/6 border-none mt-36 mb-12"
               src="https://web2pdf.org/temp/2024-04-29/20240429235444.pdf"
               title="Resume"
+              // sidebar={false}
               onLoad={handleIframeLoad}
             />
           </div>
@@ -206,9 +217,6 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
             <DialogTitle className='text-purple-400 text-center text-2xl'>SRP</DialogTitle>
             <DialogDescription className='text-green-300 text-3xl font-teko text-center'>Full-stack webpage made for the Shutoko Revival Project using the MERN stack (Mongodb, Express, React, Node) and Auth0</DialogDescription>
           </DialogHeader>
-          {/* <div className="flex justify-center mt-5">
-            <iframe width="1020" height="630" src="https://www.youtube.com/embed/VKlrg3rCXeQ?si=_E0ErFOATKWE4qw8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-          </div> */}
           <div className="relative mt-32 sm:mt-14" style={{ paddingTop: '56.25%' }}>
             <iframe 
               className="absolute top-0 left-0 w-full h-full" 
@@ -219,10 +227,11 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
               allowFullScreen
             ></iframe>
           </div>
-
-          <Button className='m-10 p-3 text-purple-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setSrpDialog(false)}>
-            Close
-          </Button>
+          <div className='flex justify-center'>
+            <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => {setSrpDialog(false); setSecretThree(true)}}>
+              Close
+            </Button>
+          </div>
         </DialogContent>
       </Dialog>
 
@@ -236,9 +245,11 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
           <div className="flex justify-center">
             {/* Docere Health content */}
           </div>
-          <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setAboutDialog(false)}>
-            Close
-          </Button>
+          <div className='flex justify-center'>
+            <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => {setDocereDialog(false); setSecretFour(true)}}>
+              Close
+            </Button>
+          </div>
         </DialogContent>
       </Dialog>
 
@@ -275,9 +286,11 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
               desire to become the best. I thrive in challenging environments and am always eager to expand my skills.
             </p>
           </div>
-          <Button className='m-1 mt-10 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => setAboutDialog(false)}>
-            Close
-          </Button>
+          <div className='flex justify-center'>
+            <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => {setAboutDialog(false); setSecretOne(true)}}>
+              Close
+            </Button>
+          </div>
         </DialogContent>
       </Dialog>
 
