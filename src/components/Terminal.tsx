@@ -26,16 +26,18 @@ interface TerminalProps {
   setSecretFour: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+type TerminalItem = string | JSX.Element;
+
 const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDialog, setSrpDialog, aboutDialog, setAboutDialog, docereDialog, setDocereDialog, setSecretOne, setSecretTwo, setSecretThree, setSecretFour}) => {
   //prefix for command line. dont forget to change!
   const terminalPath = 'C:\\MaxLaur>'
   const terminalIntro = [
-    "type help for available commands",
-    "Hi, I'm Max, a web developer focused on the frontend. Use the terminal or the menu above to view my portfolio's content.",
+    <span key="command">Type <span className='text-purple-400'>help</span> for available commands</span>,
+    <span key="command">Hi, I&apos;m Max, a web developer focused on the frontend.<span className='text-purple-400'> Use the terminal</span> or the menu above to view my portfolio&apos;s content.</span>,
     "MaxLaur [version 1.0]"
   ]
   const [inputText, setInputText] = useState<string>(terminalPath);
-  const [terminalText, setTerminalText] = useState<string[]>(terminalIntro);
+  const [terminalText, setTerminalText] = useState<TerminalItem[]>(terminalIntro);
   const [loading, setLoading] = useState<boolean>(true);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
@@ -302,7 +304,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
       >
         <div className="flex-grow flex flex-col-reverse">
           {terminalText.map((text, index) => (
-            <p key={text + index} >{text}</p>
+            <p key={index + index} >{text}</p>
           ))}
         </div>
         <input
@@ -312,7 +314,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
           onChange={handleInputChange}
           onKeyPress={handleEnterPress}
           onKeyDown={handleKeyDown}
-          className="w-full bg-black text-green-300 border-none outline-none "
+          className="w-full bg-black text-green-300 border-none outline-none"
           autoFocus
         />
       </section>

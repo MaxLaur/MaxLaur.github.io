@@ -48,6 +48,7 @@ export default function Home() {
       <Image
         src={lights_out}
         alt="lights out"
+        unoptimized
       />
     </div>
       :
@@ -81,21 +82,25 @@ export default function Home() {
               src={candle}
               alt="secretcandle1"
               className={`${secretOne ? "visible" : "invisible"} w-1/5 h-1/5 mb-1`}
+              unoptimized
             />
             <Image
               src={candle}
               alt="secretcandle2"
               className={`${secretTwo ? "visible" : "invisible"} w-1/5 h-1/5 mb-1`}
+              unoptimized
             />
             <Image
               src={candle}
               alt="secretcandle3"
               className={`${secretThree ? "visible" : "invisible"} w-1/5 h-1/5 mb-1`}
+              unoptimized
             />
             <Image
               src={candle}
               alt="secretcandle4"
               className={`${secretFour ? "visible" : "invisible"} w-1/5 h-1/5 mb-1`}
+              unoptimized
             />
           </section>
         )}
@@ -108,12 +113,16 @@ export default function Home() {
               <Image
                 src={candle}
                 alt="secretcandle1"
-                className={`${secretOne ? "visible" : "invisible"}`}
+                className={`transition-opacity duration-1500 ${secretOne ? "opacity-100" : "opacity-0"}`}
+                style={{ animation: `${secretOne ? 'candlesFadeIn 2.5s forwards' : 'none'}` }}
+                unoptimized
               />
               <Image
                 src={candle}
                 alt="secretcandle2"
-                className={secretTwo ? "visible" : "invisible"}
+                className={`transition-opacity duration-1500 ${secretTwo ? "opacity-100" : "opacity-0"}`}
+                style={{ animation: `${secretTwo ? 'candlesFadeIn 2.5s forwards' : 'none'}` }}
+                unoptimized
               />
             </div>
           )}
@@ -137,12 +146,16 @@ export default function Home() {
               <Image
                 src={candle}
                 alt="secretcandle3"
-                className={`${secretThree ? "visible" : "invisible"}`}
+                className={`transition-opacity duration-1500 ${secretThree ? "opacity-100" : "opacity-0"}`}
+                style={{ animation: `${secretThree ? 'candlesFadeIn 2.5s forwards' : 'none'}` }}
+                unoptimized
               />
               <Image
                 src={candle}
                 alt="secretcandle4"
-                className={secretFour ? "visible" : "invisible"}
+                className={`transition-opacity duration-1500 ${secretFour ? "opacity-100" : "opacity-0"}`}
+                style={{ animation: `${secretFour ? 'candlesFadeIn 2.5s forwards' : 'none'}` }}
+                unoptimized
               />
             </div>
           )}

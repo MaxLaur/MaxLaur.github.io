@@ -154,6 +154,15 @@
 @keyframes scanlines {
   0% { background-position: 0 50%; }
 }
+
+@keyframes candlesFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* end of scanlines */
 
 /* terminal */
