@@ -28,7 +28,7 @@ const SRP = () => {
           <div>
             <Link
               href='https://github.com/MaxLaur/project-srp-website'
-              target='blank'
+              target='_blank'
               className="hover:text-purple-500"
             >Github page</Link>
           </div>
