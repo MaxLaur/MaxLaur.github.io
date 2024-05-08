@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState, useRef, RefObject } from 'react';
+import Link from 'next/link';
 import { 
   Dialog,
   DialogContent,
@@ -79,7 +80,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
     if (event.key === 'Enter') {
       switch (inputText) {
         case 'C:\\MaxLaur>help': {
-          const clear = "clear/cls --- clear the terminal";
+          const clear = "clear --- clear the terminal";
           const ls = "ls ---------- list viewable files";
           const resume = "resume ------ view my CV";
           const about = "about ------- about me :))";
@@ -88,8 +89,9 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
           break;
         }
         case 'C:\\MaxLaur>clear':
-        case 'C:\\MaxLaur>cls': {
-          setTerminalText(["type help for available commands", "MaxLaur [version 1.0]"]);
+        case 'C:\\MaxLaur>cls':
+        case 'C:\\MaxLaur>clear/cls': {
+          setTerminalText(terminalIntro);
           break;
         }
         case 'C:\\MaxLaur>ls': {
@@ -180,7 +182,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
       <Dialog open={resumeDialog} >
         <DialogContent className="h-full">
           <DialogHeader className="h-12">
-            <DialogTitle className='text-purple-300 text-center text-3xl'>My Resume</DialogTitle>
+            <DialogTitle className='text-purple-400 text-center text-3xl'>My Resume</DialogTitle>
             <div className='flex justify-center'>
               <Button className='m-1 p-3 text-green-300 bg-purple-400 hover:text-purple-400 text-xl' type="button" variant="secondary" onClick={() => {setResumeDialog(false); setSecretTwo(true)}}>
                 Close
@@ -217,7 +219,7 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
         <DialogContent>
           <DialogHeader className="h-12">
             <DialogTitle className='text-purple-400 text-center text-2xl'>SRP</DialogTitle>
-            <DialogDescription className='text-green-300 text-3xl font-teko text-center'>Full-stack webpage made for the Shutoko Revival Project using the MERN stack (Mongodb, Express, React, Node) and Auth0</DialogDescription>
+            <DialogDescription className='text-green-300 text-3xl font-teko text-center'>Full-stack webpage project made for the Shutoko Revival Project using the MERN stack (Mongodb, Express, React, Node) and Auth0</DialogDescription>
           </DialogHeader>
           <div className="relative mt-32 sm:mt-14" style={{ paddingTop: '56.25%' }}>
             <iframe 
@@ -242,7 +244,12 @@ const Terminal: React.FC<TerminalProps> = ({resumeDialog, setResumeDialog, srpDi
         <DialogContent>
           <DialogHeader className="h-12">
             <DialogTitle className='text-purple-400 text-center text-2xl '>Docere Health</DialogTitle>
-            <DialogDescription className='text-green-300 font-teko text-center text-3xl'> Docere Health is an electronic health/medical record platform</DialogDescription>
+            <DialogDescription className='text-green-300 font-teko text-center text-3xl'>
+              <Link href='https://docereapp.net/' className="hover:text-purple-400 hover:scale-105 underline" target="blank">
+                Docere Health{' '}
+              </Link>
+              is an electronic health/medical record platform
+            </DialogDescription>
           </DialogHeader>
           <div className="relative mt-14" style={{ paddingTop: '56.25%' }}>
             <iframe
