@@ -3,6 +3,14 @@ import { Inter } from "next/font/google";
 import localFont from 'next/font/local'
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
+import { GoogleAnalytics } from '@next/third-parties/google'
+
+declare namespace NodeJS {
+  interface ProcessEnv {
+      NEXT_PUBLIC_GA_TRACKING_ID: string;
+  }
+}
+const googleAnalyticsId: string = process.env.NEXT_PUBLIC_GA_TRACKING_ID || '';
 
 const inter = Inter({ subsets: ["latin"] });
 const universalJackFont = localFont({
@@ -32,6 +40,7 @@ export default function RootLayout({
         {children}
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId={googleAnalyticsId} />
     </html>
   );
 }
